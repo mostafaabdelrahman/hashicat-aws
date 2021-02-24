@@ -8,7 +8,7 @@ resource "aws_vpc" "hashicat" {
   enable_dns_hostnames = true
 
   tags = {
-    name = "${var.prefix}-vpc-${var.region}"
+    name        = "${var.prefix}-vpc-${var.region}"
     environment = "Production"
   }
 }
@@ -186,7 +186,7 @@ resource "tls_private_key" "hashicat" {
 }
 
 locals {
-  private_key_filename = "${random_id.app-server-id.dec}-ssh-key.pem"
+  private_key_filename = "${var.prefix}-ssh-key.pem"
 }
 
 resource "aws_key_pair" "hashicat" {
